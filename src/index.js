@@ -1,4 +1,5 @@
 import "./css/style.css";
+import TodoView from "./js/components/todoView.js";
 import Todo from "./js/models/todo.js";
 
 const todo = new Todo(
@@ -9,3 +10,4 @@ const todo = new Todo(
   "default"
 );
 console.log(todo);
+const todoView = new TodoView(todo);
