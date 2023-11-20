@@ -21,6 +21,13 @@ export default class ScreenController {
     this.renderTodo(todo);
   }
 
+  editTodo(todoView) {
+    this.todoFormModal.open((values) => {
+      const newTodo = this.todosController.editTodo(todoView.todo.id, values);
+      todoView.updateTodo(newTodo);
+    });
+  }
+
   renderTodos(todos) {
     for (const todo of todos) {
       this.renderTodo(todo);
@@ -28,7 +35,7 @@ export default class ScreenController {
   }
 
   renderTodo(todo) {
-    const todoView = new TodoView({ ...todo });
+    const todoView = new TodoView({ ...todo }, this.editTodo.bind(this));
     this.todosDiv.appendChild(todoView.todoDiv);
   }
 }

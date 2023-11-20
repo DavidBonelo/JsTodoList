@@ -1,8 +1,7 @@
 export default class TodoView {
-  todoDiv;
-
-  constructor(todo) {
+  constructor(todo, onEdit) {
     this.todo = todo;
+    this.onEdit = onEdit;
     this.todoDiv = document.createElement("div");
     this.renderTodo();
   }
@@ -15,6 +14,14 @@ export default class TodoView {
         <h3>${this.todo.title}</h3>
         <p>${this.todo.description}</p>
     `;
-    return todoDiv;
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "edit";
+    editBtn.onclick = () => this.onEdit(this);
+    this.todoDiv.appendChild(editBtn);
+  }
+
+  updateTodo(todo) {
+    this.todo = todo;
+    this.renderTodo();
   }
 }

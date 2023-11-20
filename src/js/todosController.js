@@ -19,6 +19,11 @@ export default class TodosController {
     return todo;
   }
 
+  editTodo(todoId, values) {
+    const todo = this.todos.find((t) => t.id === todoId);
+    return Object.assign(todo, values);
+  }
+
   removeTodo(todoId) {
     const todoIdx = this.todos.findIndex((t) => t.id === todoId);
     if (todoIdx === -1) return undefined;
