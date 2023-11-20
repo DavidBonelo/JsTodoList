@@ -1,13 +1,20 @@
 import "./css/style.css";
 import TodoView from "./js/components/todoView.js";
 import Todo from "./js/models/todo.js";
+import TodosController from "./js/todosController.js";
 
-const todo = new Todo(
-  "Buy milk",
-  "buy 3 bottles of HappyCow milk",
-  Date.now(),
-  "high",
-  "default"
-);
-console.log(todo);
-const todoView = new TodoView(todo);
+const todosController = new TodosController();
+
+todosController.addTodo({
+  title: "Buy milk",
+  description: "buy 3 bottles of HappyCow milk",
+  dueDate: Date.now(),
+  priority: "high",
+  project: "default",
+});
+
+const todos = todosController.getTodos();
+
+for (const todo of todos) {
+  new TodoView(todo);
+}
