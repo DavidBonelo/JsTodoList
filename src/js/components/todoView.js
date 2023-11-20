@@ -3,7 +3,9 @@ export default class TodoView {
 
   constructor(todo) {
     this.todo = todo;
-    this.buildTodo(todo);
+    this.todoDiv = this.buildTodo(todo);
+    this.todosDiv = document.querySelector(".todos");
+    this.todosDiv.appendChild(this.todoDiv);
   }
 
   buildTodo(todo) {
@@ -14,7 +16,6 @@ export default class TodoView {
         <h3>${todo.title}</h3>
         <p>${todo.description}</p>
     `;
-    this.todoDiv = todoDiv;
-    document.body.appendChild(todoDiv);
+    return todoDiv;
   }
 }
