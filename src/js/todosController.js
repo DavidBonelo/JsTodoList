@@ -16,6 +16,7 @@ export default class TodosController {
       data.project
     );
     this.todos.push(todo);
+    return todo;
   }
 
   removeTodo(todoId) {

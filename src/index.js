@@ -1,6 +1,5 @@
 import "./css/style.css";
-import TodoView from "./js/components/todoView.js";
-import Todo from "./js/models/todo.js";
+import ScreenController from "./js/ScreenController.js";
 import TodosController from "./js/todosController.js";
 
 const todosController = new TodosController();
@@ -13,8 +12,4 @@ todosController.addTodo({
   project: "default",
 });
 
-const todos = todosController.getTodos();
-
-for (const todo of todos) {
-  new TodoView(todo);
-}
+const screenController = new ScreenController(todosController);

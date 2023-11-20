@@ -9,6 +9,7 @@ export default class Todo {
     this.priority = priority;
     this.project = project;
   }
+
   setCompleted(bool) {
     this.completed = bool;
   }
