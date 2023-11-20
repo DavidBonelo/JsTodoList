@@ -2,10 +2,13 @@ import TodoFormModal from "./components/todoFormModal.js";
 import TodoView from "./components/todoView.js";
 
 export default class ScreenController {
+  todoFormModal = new TodoFormModal();
+  todosDiv = document.querySelector(".todos");
+  addBtn = document.getElementById("add-todo");
+
   constructor(todosController) {
     this.todosController = todosController;
-    this.todoFormModal = new TodoFormModal();
-    this.addBtn = document.getElementById("add-todo").onclick = () =>
+    this.addBtn.onclick = () =>
       this.todoFormModal.open(this.addTodo.bind(this));
 
     const todos = todosController.getTodos();
@@ -15,12 +18,17 @@ export default class ScreenController {
 
   addTodo(values) {
     const todo = this.todosController.addTodo(values);
-    new TodoView(todo);
+    this.renderTodo(todo);
   }
 
   renderTodos(todos) {
     for (const todo of todos) {
-      new TodoView(todo);
+      this.renderTodo(todo);
     }
+  }
+
+  renderTodo(todo) {
+    const todoView = new TodoView({ ...todo });
+    this.todosDiv.appendChild(todoView.todoDiv);
   }
 }
