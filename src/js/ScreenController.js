@@ -1,16 +1,12 @@
+import TodoFormModal from "./components/todoFormModal.js";
 import TodoView from "./components/todoView.js";
 
 export default class ScreenController {
   constructor(todosController) {
     this.todosController = todosController;
+    this.todoFormModal = new TodoFormModal();
     this.addBtn = document.getElementById("add-todo").onclick = () =>
-      this.addTodo({
-        title: "Buy more milk",
-        description: "buy 3 bottles of HappyCow milk",
-        dueDate: Date.now(),
-        priority: "high",
-        project: "default",
-      });
+      this.todoFormModal.open(this.addTodo.bind(this));
 
     const todos = todosController.getTodos();
     console.log(todos);
