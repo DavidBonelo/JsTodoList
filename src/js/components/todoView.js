@@ -20,7 +20,7 @@ export default class TodoView {
     this.todoDiv.appendChild(editBtn);
   }
 
-  updateTodo(todo) {
+  setTodo(todo) {
     this.todo = todo;
     this.renderTodo();
   }

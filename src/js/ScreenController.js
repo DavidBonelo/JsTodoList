@@ -22,9 +22,10 @@ export default class ScreenController {
   }
 
   editTodo(todoView) {
+    this.todoFormModal.setInpputs(todoView.todo);
     this.todoFormModal.open((values) => {
       const newTodo = this.todosController.editTodo(todoView.todo.id, values);
-      todoView.updateTodo(newTodo);
+      todoView.setTodo(newTodo);
     });
   }
 
