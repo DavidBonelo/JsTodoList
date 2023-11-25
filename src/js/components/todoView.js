@@ -1,7 +1,8 @@
 export default class TodoView {
-  constructor(todo, onEdit) {
+  constructor(todo, onEdit, onDelete) {
     this.todo = todo;
     this.onEdit = onEdit;
+    this.onDelete = onDelete;
     this.todoDiv = document.createElement("div");
     this.renderTodo();
   }
@@ -18,10 +19,19 @@ export default class TodoView {
     editBtn.textContent = "edit";
     editBtn.onclick = () => this.onEdit(this);
     this.todoDiv.appendChild(editBtn);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "delete";
+    deleteBtn.onclick = () => this.deleteClick();
+    this.todoDiv.appendChild(deleteBtn);
   }
 
   setTodo(todo) {
     this.todo = todo;
     this.renderTodo();
+  }
+
+  deleteClick() {
+    this.onDelete(this.todo.id);
+    this.todoDiv.remove();
   }
 }
