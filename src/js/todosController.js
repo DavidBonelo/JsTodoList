@@ -29,4 +29,8 @@ export default class TodosController {
     if (todoIdx === -1) return undefined;
     this.todos.splice(todoIdx, 1);
   }
+
+  removeTodosByProject(projectName) {
+    this.todos = this.todos.filter((t) => t.project === projectName);
+  }
 }

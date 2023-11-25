@@ -17,6 +17,7 @@ export default class ScreenController {
   }
 
   addTodo(values) {
+    // TODO: pass project object to todo
     const todo = this.todosController.addTodo(values);
     this.renderTodo(todo);
   }
