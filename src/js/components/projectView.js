@@ -1,6 +1,7 @@
 export default class ProjectView {
-  constructor(project) {
+  constructor(project, onDelete) {
     this.project = project;
+    this.onDelete = onDelete;
     this.projectDiv = document.createElement("div");
     this.renderProject();
   }
@@ -15,6 +16,7 @@ export default class ProjectView {
   }
 
   deleteProject() {
+    this.onDelete(this.project.id);
     this.projectDiv.remove();
   }
 }

@@ -14,11 +14,11 @@ export default class ScreenController {
     this.projectsController = projectsController;
     this.addTodoBtn.onclick = () =>
       this.todoFormModal.open(this.addTodo.bind(this));
-    const project = this.projectsController.addProject("uwuwu");
-    this.projectsDiv.appendChild(new ProjectView(project).projectDiv);
+    this.addProjectBtn.onclick = () => this.addProject();
 
+    const projects = projectsController.getProjects();
+    this.renderProjects(projects);
     const todos = todosController.getTodos();
-    console.log(todos);
     this.renderTodos(todos);
   }
 
@@ -53,5 +53,28 @@ export default class ScreenController {
       this.deleteTodo.bind(this)
     );
     this.todosDiv.appendChild(todoView.todoDiv);
+  }
+
+  addProject() {
+    const project = this.projectsController.addProject("uwuwu");
+    this.renderProject(project);
+  }
+
+  deleteProject(projectId) {
+    this.projectsController.removeProject(projectId);
+    this.todosController.removeTodosByProject(projectId);
+    console.log(this.projectsController.getProjects());
+  }
+
+  renderProjects(projects) {
+    projects.map((p) => this.renderProject(p));
+  }
+
+  renderProject(project) {
+    const projectView = new ProjectView(
+      { ...project },
+      this.deleteProject.bind(this)
+    );
+    this.projectsDiv.appendChild(projectView.projectDiv);
   }
 }
