@@ -1,15 +1,21 @@
 import TodoFormModal from "./components/todoFormModal.js";
 import TodoView from "./components/todoView.js";
+import ProjectView from "./components/projectView.js";
 
 export default class ScreenController {
   todoFormModal = new TodoFormModal();
   todosDiv = document.querySelector(".todos");
-  addBtn = document.getElementById("add-todo");
+  addTodoBtn = document.getElementById("add-todo");
+  projectsDiv = document.getElementById("projects");
+  addProjectBtn = document.getElementById("add-project");
 
-  constructor(todosController) {
+  constructor(todosController, projectsController) {
     this.todosController = todosController;
-    this.addBtn.onclick = () =>
+    this.projectsController = projectsController;
+    this.addTodoBtn.onclick = () =>
       this.todoFormModal.open(this.addTodo.bind(this));
+    const project = this.projectsController.addProject("uwuwu");
+    this.projectsDiv.appendChild(new ProjectView(project).projectDiv);
 
     const todos = todosController.getTodos();
     console.log(todos);

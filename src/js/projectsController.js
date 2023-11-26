@@ -1,10 +1,9 @@
-import Project from "./models/project";
+import Project from "./models/project.js";
 
 export default class ProjectsController {
   projects = [];
 
-  constructor(todosController) {
-    this.todosController = todosController;
+  constructor() {
     if (this.projects.length < 1) {
       this.projects.push(new Project("default"));
     }
@@ -23,7 +22,6 @@ export default class ProjectsController {
   removeProject(projectId) {
     const projectIdx = this.projects.findIndex((p) => p.id === projectId);
     if (projectIdx === -1) return undefined;
-    this.todosController.removeTodosByProject(this.projects[projectIdx].name);
     this.projects.splice(projectIdx, 1);
   }
 }
