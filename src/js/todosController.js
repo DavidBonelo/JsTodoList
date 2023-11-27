@@ -30,7 +30,7 @@ export default class TodosController {
     this.todos.splice(todoIdx, 1);
   }
 
-  removeTodosByProject(projectName) {
-    this.todos = this.todos.filter((t) => t.project === projectName);
+  removeTodosByProject(projectId) {
+    this.todos = this.todos.filter((t) => t.project?.id != projectId);
   }
 }

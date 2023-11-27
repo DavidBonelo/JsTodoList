@@ -42,6 +42,7 @@ export default class ScreenController {
   }
 
   renderTodos(todos) {
+    this.todosDiv.replaceChildren();
     for (const todo of todos) {
       this.renderTodo(todo);
     }
@@ -64,6 +65,7 @@ export default class ScreenController {
   deleteProject(projectId) {
     this.projectsController.removeProject(projectId);
     this.todosController.removeTodosByProject(projectId);
+    this.renderTodos(this.todosController.getTodos());
   }
 
   selectProject(projectView) {
