@@ -11,7 +11,6 @@ todosController.addTodo({
   description: "buy 3 bottles of HappyCow milk",
   dueDate: Date.now(),
   priority: "high",
-  project: "default",
 });
 
 const screenController = new ScreenController(
