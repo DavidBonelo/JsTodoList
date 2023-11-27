@@ -74,6 +74,9 @@ export default class ScreenController {
       this.selectedProject = undefined;
     }
     if (projectView.selected) this.selectedProject = projectView;
+    this.renderTodos(
+      this.todosController.getTodosByProject(this.selectedProject?.project)
+    );
   }
 
   renderProjects(projects) {

@@ -33,4 +33,9 @@ export default class TodosController {
   removeTodosByProject(projectId) {
     this.todos = this.todos.filter((t) => t.project?.id != projectId);
   }
+
+  getTodosByProject(project) {
+    if (!project) return this.todos;
+    return this.todos.filter((t) => t.project?.id === project.id);
+  }
 }
