@@ -19,3 +19,9 @@ body {
     border: 1px solid blue;
     border-radius: 4px;
 }
+
+.selected {
+    background-color: blue;
+    color: white;
+    border-color: black;
+}

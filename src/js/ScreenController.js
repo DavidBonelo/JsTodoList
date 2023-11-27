@@ -8,6 +8,7 @@ export default class ScreenController {
   addTodoBtn = document.getElementById("add-todo");
   projectsDiv = document.getElementById("projects");
   addProjectBtn = document.getElementById("add-project");
+  selectedProject;
 
   constructor(todosController, projectsController) {
     this.todosController = todosController;
@@ -63,7 +64,14 @@ export default class ScreenController {
   deleteProject(projectId) {
     this.projectsController.removeProject(projectId);
     this.todosController.removeTodosByProject(projectId);
-    console.log(this.projectsController.getProjects());
+  }
+
+  selectProject(projectView) {
+    if (this.selectedProject) {
+      this.selectedProject.setSelected(false);
+      this.selectedProject = undefined;
+    }
+    if (projectView.selected) this.selectedProject = projectView;
   }
 
   renderProjects(projects) {
@@ -73,6 +81,7 @@ export default class ScreenController {
   renderProject(project) {
     const projectView = new ProjectView(
       { ...project },
+      this.selectProject.bind(this),
       this.deleteProject.bind(this)
     );
     this.projectsDiv.appendChild(projectView.projectDiv);
