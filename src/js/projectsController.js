@@ -4,9 +4,7 @@ export default class ProjectsController {
   projects = [];
 
   constructor() {
-    if (this.projects.length < 1) {
-      this.projects.push(new Project("default"));
-    }
+    if (this.projects.length < 1) this.addProject("default");
   }
 
   getProjects() {
@@ -14,7 +12,7 @@ export default class ProjectsController {
   }
 
   addProject(name) {
-    const project = new Project(name);
+    const project = new Project({ name });
     this.projects.push(project);
     return project;
   }

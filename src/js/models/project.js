@@ -1,7 +1,6 @@
 export default class Project {
-  id = window.crypto.randomUUID();
-
-  constructor(name) {
+  constructor({ id, name }) {
+    this.id = id || window.crypto.randomUUID();
     this.name = name;
   }
 }

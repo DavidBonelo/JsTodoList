@@ -3,18 +3,23 @@ import Todo from "./models/todo.js";
 export default class TodosController {
   todos = [];
 
+  constructor() {
+    if (this.todos.length < 1) {
+      this.addTodo({
+        title: "Buy milk example",
+        description: "buy 3 bottles of HappyCow milk",
+        dueDate: Date.now(),
+        priority: "high",
+      });
+    }
+  }
+
   getTodos() {
     return this.todos;
   }
 
-  addTodo(data) {
-    const todo = new Todo(
-      data.title,
-      data.description,
-      data.dueDate,
-      data.priority,
-      data.project
-    );
+  addTodo(todoData) {
+    const todo = new Todo(todoData);
     this.todos.push(todo);
     return todo;
   }

@@ -6,13 +6,6 @@ import ProjectsController from "./js/projectsController.js";
 const todosController = new TodosController();
 const projectsController = new ProjectsController();
 
-todosController.addTodo({
-  title: "Buy milk",
-  description: "buy 3 bottles of HappyCow milk",
-  dueDate: Date.now(),
-  priority: "high",
-});
-
 const screenController = new ScreenController(
   todosController,
   projectsController
