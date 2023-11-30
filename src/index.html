@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Todo List</h1>
-    <h3>Project: Default</h3>
+    <h3>Project:</h3>
     <button id="add-project">Add Project</button>
     <div id="projects"></div>
     <button id="add-todo">Add TODO</button>
@@ -28,6 +28,13 @@
         </select>
         <label for="completed">completed: </label>
         <input type="checkbox" id="completed" name="completed" />
+        <button>Save</button>
+      </form>
+    </dialog>
+    <dialog id="project-dialog">
+      <form id="project-form" action="#" method="post">
+        <label for="name">name: </label>
+        <input type="text" id="name" name="name" required />
         <button>Save</button>
       </form>
     </dialog>
