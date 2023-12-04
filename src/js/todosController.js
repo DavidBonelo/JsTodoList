@@ -10,7 +10,7 @@ export default class TodosController {
       this.addTodo({
         title: "Buy milk example",
         description: "buy 3 bottles of HappyCow milk",
-        dueDate: Date.now(),
+        dueDate: new Date().toISOString().split('T')[0],
         priority: "high",
       });
     }

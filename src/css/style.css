@@ -25,3 +25,22 @@ body {
     color: white;
     border-color: black;
 }
+
+.completed {
+    color: gray;
+    border-color: gray;
+    text-decoration-line: line-through;
+}
+
+.prio-low {
+    background-color: lightcyan;
+}
+
+.prio-mid {
+
+    background-color: lightyellow;
+}
+
+.prio-high {
+    background-color: lightcoral;
+}
