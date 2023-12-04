@@ -1,8 +1,9 @@
 export default class TodoView {
-  constructor(todo, onEdit, onDelete) {
+  constructor(todo, onEdit, onDelete, onComplete) {
     this.todo = todo;
     this.onEdit = onEdit;
     this.onDelete = onDelete;
+    this.onComplete = onComplete;
     this.todoDiv = document.createElement("div");
     this.renderTodo();
   }
@@ -22,6 +23,8 @@ export default class TodoView {
     const completedCheckbox = document.createElement("input");
     completedCheckbox.type = "checkbox";
     completedCheckbox.checked = this.todo.completed;
+    completedCheckbox.onclick = () =>
+      this.setCompleted(completedCheckbox.checked);
     this.todoDiv.insertBefore(completedCheckbox, this.todoDiv.firstChild);
 
     const editBtn = document.createElement("button");
@@ -67,5 +70,15 @@ export default class TodoView {
   deleteClick() {
     this.onDelete(this.todo.id);
     this.todoDiv.remove();
+  }
+
+  setCompleted(bool) {
+    this.todo.completed = bool;
+    this.onComplete(this.todo);
+    if (bool) {
+      this.todoDiv.classList.add("completed");
+    } else {
+      this.todoDiv.classList.remove("completed");
+    }
   }
 }

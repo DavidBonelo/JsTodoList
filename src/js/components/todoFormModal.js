@@ -39,6 +39,7 @@ export default class TodoFormModal {
   formSubmit(e) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(this.form));
+    data.completed = data.completed ? true : false;
     this.onSave(data);
     this.close();
   }

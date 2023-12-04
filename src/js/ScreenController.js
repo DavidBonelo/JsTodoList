@@ -44,6 +44,10 @@ export default class ScreenController {
     this.todosController.removeTodo(todoId);
   }
 
+  completeTodo(todo) {
+    this.todosController.editTodo(todo.id, todo);
+  }
+
   renderTodos(todos) {
     this.todosDiv.replaceChildren();
     for (const todo of todos) {
@@ -55,7 +59,8 @@ export default class ScreenController {
     const todoView = new TodoView(
       { ...todo },
       this.editTodo.bind(this),
-      this.deleteTodo.bind(this)
+      this.deleteTodo.bind(this),
+      this.completeTodo.bind(this)
     );
     this.todosDiv.appendChild(todoView.todoDiv);
   }
